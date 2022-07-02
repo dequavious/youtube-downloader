@@ -1,0 +1,148 @@
+#msg {
+    -moz-animation: cssAnimation 1s ease-in-out 3s forwards;
+    -webkit-animation: cssAnimation 1s ease-in-out 3s forwards;
+    -o-animation: cssAnimation 1s ease-in-out 3s forwards;
+    animation: cssAnimation 1s ease-in-out 3s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+
+button.btn {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  width: 12rem;
+  height: auto;
+}
+button.btn .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: rgb(224 242 254);
+  border-radius: 1.625rem;
+}
+button.btn .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: rgb(14 165 233);
+}
+button.btn .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+button.btn .circle .icon.arrow::before {
+  position: absolute;
+  content: '';
+  top: -0.25rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid rgb(14 165 233);
+  border-right: 0.125rem solid rgb(14 165 233);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+button.btn .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: rgb(14 165 233);
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+button:hover .circle {
+  width: 100%;
+}
+button:hover .circle .icon.arrow {
+  background: rgb(14 165 233);
+  -webkit-transform: translate(1rem, 0);
+          transform: translate(1rem, 0);
+}
+button:hover .button-text {
+  color: rgb(14 165 233);
+}
+
+h2 {
+    color: rgb(100 116 139);
+}
+
+spicy-sections {
+  --const-mq-affordances: [screen and (max-width: 279px) ] collapse | [screen and
+    (min-width: 280px) ] tab-bar;
+  display: block;
+}
+
+::part(tab-list) {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+[affordance="tab-bar"] h2 {
+    padding: 0.5rem 1rem 0.25rem;
+    cursor: pointer;
+}
+
+[affordance="tab-bar"] h2[tabindex="0"] {
+    color: rgb(14 165 233);
+    background: rgb(241 245 249);
+}
+
+[affordance="tab-bar"] h2:not([tabindex="0"]) {
+  color: rgb(100 116 139);
+}
+
+[affordance="tab-bar"] [role="tabpanel"] {
+  background: rgb(241 245 249);
+}
+
+[affordance=collapse] > h2::before {
+    content: "+";
+    background: inherit;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    font-weight: 100;
+    transition: transform 0.5s;
+}
+
+[affordance=collapse] > h2[expanded]::before {
+    transform: rotate(45deg);
+}

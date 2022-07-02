@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Downloader</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='dist/main.css') }}" rel="stylesheet">
+    <link rel="icon" sizes="32x32" href="{{ url_for('static',filename='images/favicon.svg') }}">
+    <script type="module" src="https://assets.codepen.io/3/SpicySections-2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
+    <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+</head>
+<body>
+    <div class="grid place-items-center h-screen">
+        <div class="grid grid-cols-1 gap-4 content-center">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
