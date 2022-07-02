@@ -13,6 +13,9 @@ app.config['SECRET_KEY'] = config.get('SECRET_KEY')
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+    print('hello')
+    print(app.config['SECRET_KEY'])
+    print(config.get('SECRET_KEY'))
     if request.method == "POST":
         session['link'] = request.form.get('url')
         try:
