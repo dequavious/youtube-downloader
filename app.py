@@ -1,10 +1,9 @@
-import os
 from io import BytesIO
 
+from dotenv import dotenv_values
 from flask import Flask, render_template, request, url_for, redirect, send_file, session, flash
 from flask_api import status
 from pytube import YouTube
-from dotenv import dotenv_values
 
 config = dotenv_values(".env")
 
@@ -14,7 +13,6 @@ app.config['SECRET_KEY'] = config.get('SECRET_KEY')
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    print(app.config['SECRET_KEY'])
     if request.method == "POST":
         session['link'] = request.form.get('url')
         try:
