@@ -27,7 +27,7 @@
                                         <tr class="bg-white border-b">
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ stream.resolution }}</td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <form onsubmit="disable_downloads('{{ stream.itag }}')" action='javascript: start_download("{{ url_for('download', itag=stream.itag) }}", "{{ title }}.mp4", "video/mp4", {{ stream.itag }})' method="post">
+                                                <form onsubmit="disable_downloads('{{ stream.itag }}')" action='javascript: start_download("{{ url_for('download', itag=stream.itag) }}?l={{ link }}", "{{ title }}.mp4", "video/mp4", {{ stream.itag }})' method="post">
                                                     <button id="btn_{{ stream.itag }}" type="submit" class="hover:bg-slate-100 font-bold py-2 px-4 rounded inline-flex items-center">
                                                         <svg class="inline-block align-middle fill-current w-4 h-4 text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                             <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"></path>
@@ -52,7 +52,7 @@
                                         <tr class="bg-white border-b">
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ stream.abr }}</td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <form onsubmit="disable_downloads('{{ stream.itag }}')" action='javascript: start_download("{{ url_for('download', itag=stream.itag) }}", "{{ title }}.mp3", "audio/mp3", {{ stream.itag }})' method="post">
+                                                <form onsubmit="disable_downloads('{{ stream.itag }}')" action='javascript: start_download("{{ url_for('download', itag=stream.itag) }}?l={{ link }}", "{{ title }}.mp3", "audio/mp3", {{ stream.itag }})' method="post">
                                                     <button id="btn_{{ stream.itag }}" type="submit" class="hover:bg-slate-100 font-bold py-2 px-4 rounded inline-flex items-center">
                                                         <svg class="inline-block align-middle fill-current w-4 h-4 text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"></path></svg>
                                                     </button>
