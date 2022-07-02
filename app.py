@@ -1,13 +1,15 @@
 import os
 from io import BytesIO
 
-from flask_api import status
-
 from flask import Flask, render_template, request, url_for, redirect, send_file, session, flash
+from flask_api import status
 from pytube import YouTube
+from dotenv import dotenv_values
+
+config = dotenv_values(".env")
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(24).hex()
+app.config['SECRET_KEY'] = config.get('SECRET_KEY')
 
 
 @app.route("/", methods=["GET", "POST"])
