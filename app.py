@@ -10,7 +10,6 @@ app.config['SECRET_KEY'] = "b7da1ed008f16f3b2a92e0f4f86770e91cf687271b5cc2df"
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    print(app.config['SECRET_KEY'])
     if request.method == "POST":
         link = request.form.get('url')
         try:
