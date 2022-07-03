@@ -1,1 +1,1 @@
-web: gunicorn --preload --timeout 0 wsgi:app
+web: gunicorn --preload --timeout 200 --workers=3 --worker-class eventlet wsgi:app
