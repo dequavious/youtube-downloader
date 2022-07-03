@@ -1,4 +1,3 @@
-import os
 from io import BytesIO
 
 from flask import Flask, render_template, request, url_for, redirect, send_file, flash
