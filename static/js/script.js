@@ -76,9 +76,6 @@ function hide() {
     const error_div = document.getElementById('error_div');
     error_div.innerHTML = "";
     error_div.style.visibility = 'hidden';
-    // setTimeout(function () {
-    //     document.getElementById('error_div').style.visibility = 'hidden';
-    // }, 3000);
 }
 
 
