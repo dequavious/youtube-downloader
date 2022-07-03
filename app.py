@@ -1,3 +1,4 @@
+import os
 from io import BytesIO
 
 from flask import Flask, render_template, request, url_for, redirect, send_file, flash
@@ -5,6 +6,7 @@ from flask_api import status
 from pytube import YouTube
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.urandom(24).hex()
 
 
 @app.route("/", methods=["GET", "POST"])
