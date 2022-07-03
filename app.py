@@ -11,10 +11,8 @@ app.config['SECRET_KEY'] = "b7da1ed008f16f3b2a92e0f4f86770e91cf687271b5cc2df"
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        # link = request.form.get('url')
         link = request.form.get('url')
         try:
-            # vid = YouTube(link)
             vid = YouTube(link)
             vid.check_availability()
             session['link'] = link
@@ -22,12 +20,6 @@ def home():
             flash("Invalid URL.")
             return redirect(url_for('home'))
         return redirect(url_for('downloads'))
-        # try:
-        #     return render_template('download.html', link=link, vid=vid, video=vid.streams.filter(progressive=True),
-        #                            audio=vid.streams.filter(mime_type="audio/mp4"), title=vid.title.replace("\"", "'"))
-        # except:
-        #     flash("An error occurred while fetching streams. Please try again later.")
-        #     return redirect(url_for('home'))
     return render_template('home.html')
 
 
@@ -36,7 +28,13 @@ def downloads():
     try:
         if not session.get('link'):
             return redirect(url_for('home'))
-        vid = YouTube(session['link'])
+
+        try:
+            vid = YouTube(session['link'])
+        except:
+            flash("Invalid URL.")
+            return redirect(url_for('home'))
+
         return render_template('download.html', vid=vid, video=vid.streams.filter(progressive=True),
                                audio=vid.streams.filter(mime_type="audio/mp4"), title=vid.title.replace("\"", "'"))
     except:
@@ -47,13 +45,10 @@ def downloads():
 @app.route("/download/<int:itag>", methods=["GET"])
 def download(itag):
     try:
-        # if not request.args.get('l'):
-        #     return "No link provided.", status.HTTP_400_BAD_REQUEST
-        # link = request.args.get('l')
         if not session.get('link'):
             return "No session link.", status.HTTP_400_BAD_REQUEST
+
         try:
-            # vid = YouTube(link)
             vid = YouTube(session['link'])
         except:
             return "Invalid link.", status.HTTP_400_BAD_REQUEST
@@ -66,9 +61,11 @@ def download(itag):
 
         stream.stream_to_buffer(buffer)
         buffer.seek(0)
+
         if stream.type == "video":
             return send_file(buffer, as_attachment=True, download_name=f'{vid.title}.mp4', mimetype="video/mp4")
         else:
             return send_file(buffer, as_attachment=True, download_name=f'{vid.title}.mp3', mimetype="audio/mp3")
+
     except:
         return "An error occurred while downloading stream.", status.HTTP_500_INTERNAL_SERVER_ERROR
