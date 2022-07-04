@@ -1,1 +1,1 @@
-web: gunicorn --preload --timeout 0 --workers=3 wsgi:app
+web: gunicorn --bind 0.0.0.0:5000 --preload --timeout 0 --workers=5 --worker-class=gevent wsgi:app
