@@ -1,3 +1,4 @@
+import re
 from io import BytesIO
 
 from flask import Flask, render_template, request, url_for, redirect, send_file, flash, session
@@ -62,10 +63,12 @@ def download(itag):
         stream.stream_to_buffer(buffer)
         buffer.seek(0)
 
+        filename = re.sub(r'[^a-zA-Z\d\s\\\[\]{}()<>?!|:;,/+=`~@#$%^&*\'"._-]', '', vid.title)
+
         if stream.type == "video":
-            return send_file(buffer, as_attachment=True, download_name=f'{vid.title}.mp4', mimetype="video/mp4")
+            return send_file(buffer, as_attachment=True, download_name=f'{filename}.mp4', mimetype="video/mp4")
         else:
-            return send_file(buffer, as_attachment=True, download_name=f'{vid.title}.mp3', mimetype="audio/mp3")
+            return send_file(buffer, as_attachment=True, download_name=f'{filename}.mp3', mimetype="audio/mp3")
 
     except:
         return "An error occurred while downloading stream.", status.HTTP_500_INTERNAL_SERVER_ERROR
