@@ -1,1 +1,1 @@
-web: gunicorn --preload --timeout 0 --workers=5 --worker-class=gevent --worker-connections=500 --max-requests 100 --threads 3 wsgi:app
+web: gunicorn --preload --timeout 0 --workers=6 --worker-class=gevent --worker-connections=500 --max-requests 100 --threads 3 wsgi:app
