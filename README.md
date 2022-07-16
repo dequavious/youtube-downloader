@@ -1,65 +1,41 @@
+## YouTube Downloader
+### REQUIREMENTS
+1. Open terminal in project directory.
+2. Install all system requirements:
+```
+$ bash scripts/requirements/install.sh
+```
+3. Create a virtual environment and install required packages, using:
+```
+$ bash scripts/requirements/setup.sh
+```
+    
 ### STEPS TO RUN WEB APP
 
-1. Create virtual environment
-```
-$ python3 -m venv venv
-```
+1. Open terminal in the project directory
 2. Activate virtual environment
 ``` 
 $ . venv/bin/activate
 ```
-3. Install required packages
-```
-$ pip install -r requirements.txt
-```
-4. Run app.py
+3. Run app.py
 ```
 $ python3 wsgi.py
 ```
-5. Open "http://0.0.0.0:5000/" in browser
+4. Open http://0.0.0.0:5000/ in browser
 
-### HAVE WEB-APP ALWAYS RUNNING LOCALLY USING DOCKER
-#### PREREQUISITES
-
-If not already installed, Docker can be installed using the following steps:
-1. Update the package index:
-```
-$ sudo apt update
-```
-2. Install Docker:
-```
-$ sudo apt install docker
-```
-3. Verify installation:
-```
-$ docker --version
-```
-4. Once Docker is installed, you need to start the Docker daemon, using:
-```
-$ sudo systemctl start docker
-```
-#### STEPS TO RUN
+### STEPS TO HAVE WEB-APP ALWAYS RUNNING LOCALLY USING DOCKER
 1. Open terminal in the project directory
-2. Build the docker image specified in the Dockerfile, using:
+2. Build the docker image, using:
 ```
-$ docker build --tag yt-dl-docker .
+$ bash scripts/docker/build.sh
 ```
 3. Run the docker image, using:
 ```
-$ docker run --restart always -d -p 13882:13882 yt-dl-docker
+$ bash scripts/docker/run.sh
 ```
-4. Verify that the docker container is up and running by inspecting the list returned by:
+4. The web-app can now be accessed at http://0.0.0.0:13882/ in browser and will always be accessible at that address
+unless the docker container is closed
+#### HOW TO CLOSE DOCKER CONTAINER
 ```
-$ docker ps
-```
-5. The web-app can now be accessed at "http://0.0.0.0:13882/" in browser and will always be accessible at that address
-unless the docker container closed
-#### STEPS TO CLOSE
-1. To close the web-app, get the container id of the docker image from the list returned by running:
-```
-$ docker ps
-```
-2. Then close the docker container, using:
-```
-$ docker stop CONTAINER_ID
+$ bash scripts/docker/close.sh
 ```
