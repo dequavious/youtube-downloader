@@ -20,7 +20,6 @@ $ python3 wsgi.py
 
 ### HAVE WEB-APP ALWAYS RUNNING LOCALLY USING DOCKER
 #### PREREQUISITES
-##### Docker
 
 If not already installed, Docker can be installed using the following steps:
 1. Update the package index:
@@ -33,7 +32,7 @@ $ sudo apt install docker
 ```
 3. Verify installation:
 ```
-$ docker -version
+$ docker --version
 ```
 #### STEPS TO RUN
 1. Once Docker is installed, you need to start the Docker daemon, using:
