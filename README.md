@@ -34,13 +34,13 @@ $ sudo apt install docker
 ```
 $ docker --version
 ```
-#### STEPS TO RUN
-1. Once Docker is installed, you need to start the Docker daemon, using:
+4. Once Docker is installed, you need to start the Docker daemon, using:
 ```
 $ sudo systemctl start docker
 ```
-2. Open terminal in the project directory
-3. Build the docker image specified in the Dockerfile, using:
+#### STEPS TO RUN
+1. Open terminal in the project directory
+2. Build the docker image specified in the Dockerfile, using:
 ```
 $ docker build --tag yt-dl-docker .
 ```
