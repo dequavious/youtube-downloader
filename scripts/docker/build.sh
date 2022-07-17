@@ -1,1 +1,0 @@
-docker build --tag yt-dl-docker .
