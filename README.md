@@ -26,7 +26,7 @@ $ bash scripts/docker/build_docker.sh
 $ bash scripts/docker/run_docker.sh
 ```
 4. The web-app can now be accessed at http://0.0.0.0:13882/ in browser and will always be accessible at that address
-unless the docker container is closed
+unless the docker container is stopped/closed
 #### HOW TO CLOSE DOCKER CONTAINER
 ```
 $ bash scripts/docker/close_docker.sh
